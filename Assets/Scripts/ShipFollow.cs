@@ -12,6 +12,7 @@ public class ShipFollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = shipTarget.position + offset;
-        transform.Rotate(Vector3.Lerp(transform.rotation.eulerAngles, shipTarget.rotation.eulerAngles, smoothing));
+        
+        transform.rotation = Quaternion.Lerp(transform.rotation, shipTarget.rotation, smoothing);
     }
 }

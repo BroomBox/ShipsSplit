@@ -1,20 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public enum WhatPlayer
 {
-    player1,
-    player2
+    Player1,
+    Player2
 }
 
 public class ShipController : MonoBehaviour
 {
     CharacterController _controller;
+
     public WhatPlayer playerNum;
-    // Start is called before the first frame update
+
+    public float speed = 6f;
+    public float turnSpeed = 15f;
     
+    
+
     Vector2 _input;
 
     Vector3 _velocity;
@@ -25,16 +28,16 @@ public class ShipController : MonoBehaviour
         _controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         // get input
         switch (playerNum)
         {
-            case WhatPlayer.player1:
+            case WhatPlayer.Player1:
                 PlayerOneInput();
                 break;
-            case WhatPlayer.player2:
+            case WhatPlayer.Player2:
                 PlayerTwoInput();
                 break;
         }
@@ -44,6 +47,8 @@ public class ShipController : MonoBehaviour
     {
         Move();
     }
+
+
 
     void PlayerOneInput()
     {
@@ -59,6 +64,8 @@ public class ShipController : MonoBehaviour
 
     void Move()
     {
-        
+        _velocity = transform.forward * _input.y;
+        transform.Rotate(Vector3.up * _input.x * turnSpeed * Time.deltaTime);
+        _controller.Move(speed * Time.deltaTime * _velocity);
     }
 }
