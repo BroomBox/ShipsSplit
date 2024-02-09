@@ -6,13 +6,13 @@ public class ShipFollow : MonoBehaviour
 
     public float smoothing = 0.15f;
     public Vector3 offset = new();
-    
-    
+
+
     // Update is called once per frame
     void LateUpdate()
     {
         transform.position = shipTarget.position + offset;
-        
+
         transform.rotation = Quaternion.Lerp(transform.rotation, shipTarget.rotation, smoothing);
     }
 }
