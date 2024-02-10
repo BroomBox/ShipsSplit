@@ -4,7 +4,8 @@ using UnityEngine;
 public enum WhatPlayer
 {
     Player1,
-    Player2
+    Player2, 
+    None
 }
 
 public class ShipController : MonoBehaviour

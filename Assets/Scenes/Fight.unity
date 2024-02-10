@@ -169,9 +169,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 188366570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &188366573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -287,9 +289,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 217677436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &217677439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -460,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 1
-  ObjectToShoot: {fileID: 7044023333831083354, guid: 23501e7ab741047419c415d3ae1f9cac,
+  objectToShoot: {fileID: 7044023333831083354, guid: 23501e7ab741047419c415d3ae1f9cac,
     type: 3}
   shootOrigin: {fileID: 1500140586}
   trajectoryLine: {fileID: 321321342}
@@ -526,9 +530,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 326983419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &326983422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -614,6 +620,7 @@ GameObject:
   - component: {fileID: 334104400}
   - component: {fileID: 334104399}
   - component: {fileID: 334104404}
+  - component: {fileID: 334104405}
   m_Layer: 3
   m_Name: Ship1
   m_TagString: Destroyable
@@ -635,7 +642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 0
   speed: 6
-  turnSpeed: 45
+  turnSpeed: 60
 --- !u!143 &334104400
 CharacterController:
   m_ObjectHideFlags: 0
@@ -750,6 +757,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &334104405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 334104398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a09a461f17d87448d917e35d218446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
+  whatPlayer: 0
 --- !u!1 &401226716
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNum: 0
-  ObjectToShoot: {fileID: 7100009203963894678, guid: 2dca84bd8883e5f4db4821aa63979904,
+  objectToShoot: {fileID: 7100009203963894678, guid: 2dca84bd8883e5f4db4821aa63979904,
     type: 3}
   shootOrigin: {fileID: 1436555586}
   trajectoryLine: {fileID: 401226722}
@@ -1082,9 +1104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 421520764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &421520767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1200,9 +1224,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 467759349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &467759352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1274,6 +1300,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 467759349}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &546882427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546882429}
+  - component: {fileID: 546882428}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &546882428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546882427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 2ad148efbb7a9d748b26162346f9cc8c, type: 2}
+--- !u!4 &546882429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546882427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &778607958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,9 +1393,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 778607958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &778607961
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1511,7 +1588,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850694296}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &850694299
 Camera:
   m_ObjectHideFlags: 0
@@ -1588,7 +1665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134396608}
   m_Layer: 0
-  m_Name: Enironment
+  m_Name: Enviroment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1793,9 +1870,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1177387019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &1177387022
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1867,6 +1946,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177387019}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1310528349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1310528351}
+  - component: {fileID: 1310528350}
+  m_Layer: 0
+  m_Name: _GameMangaer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1310528350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310528349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002408cd1917bac45bc152880e58374a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winner: 2
+--- !u!4 &1310528351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310528349}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1343775212
 GameObject:
   m_ObjectHideFlags: 0
@@ -2207,9 +2331,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1511898018}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &1511898021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2325,9 +2451,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1626141980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &1626141983
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2485,9 +2613,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1880769842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &1880769845
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2861,9 +2991,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2072582679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b49e70d21c6cb43b7c2e836cacb1c3, type: 3}
+  m_Script: {fileID: 11500000, guid: ae1fdbb3a800ee84b95286d9c577b263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
 --- !u!65 &2072582681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3069,6 +3201,7 @@ GameObject:
   - component: {fileID: 2144173286}
   - component: {fileID: 2144173285}
   - component: {fileID: 2144173290}
+  - component: {fileID: 2144173291}
   m_Layer: 3
   m_Name: Ship2
   m_TagString: Destroyable
@@ -3090,7 +3223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   speed: 6
-  turnSpeed: 45
+  turnSpeed: 60
 --- !u!143 &2144173286
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3205,6 +3338,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2144173291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144173284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8a09a461f17d87448d917e35d218446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 10
+  whatPlayer: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3217,3 +3365,5 @@ SceneRoots:
   - {fileID: 2144173289}
   - {fileID: 1175294431}
   - {fileID: 2019440951}
+  - {fileID: 1310528351}
+  - {fileID: 546882429}

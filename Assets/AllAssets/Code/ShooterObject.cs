@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+
+/// <summary>
+/// What in the actual fuck are those namespaces
+/// </summary>
+
 public class ShooterObject : MonoBehaviour
 {
     public WhatPlayer playerNum;
 
-    [SerializeField] public GameObject ObjectToShoot;
 
-    [SerializeField] Transform shootOrigin;
+    // public are by default serialized yk
+    public GameObject objectToShoot;
+
+    [SerializeField] private Transform shootOrigin;
 
     [SerializeField] private TrajectorylLine trajectoryLine;
 
@@ -19,59 +26,64 @@ public class ShooterObject : MonoBehaviour
 
     [SerializeField] private float shootDelay = 1f;
 
-    private bool isWaiting = false;
+    private bool _isWaiting = false;
 
-
-    void Start()
-    {
-
-    }
+    private bool _input;
 
     void Update()
+    {
+        GetInput();
+        PlayersShoot();
+    }
+
+
+
+    private void GetInput()
     {
         switch (playerNum)
         {
             case WhatPlayer.Player1:
-                PlayersShoot(KeyCode.Q);
+                _input = Input.GetKey(KeyCode.Space); // space key
                 break;
             case WhatPlayer.Player2:
-                PlayersShoot(KeyCode.Space);
+                _input = Input.GetKey(KeyCode.Return); // enter key
                 break;
         }
     }
 
-    private void PlayersShoot(KeyCode code)
+    private void PlayersShoot()
     {
-        //fix - player1 Q, player2 Spacja
-        if (Input.GetKey(code))
-        {
-            trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * shotForce / bombMass);
-        }
-        else
-        {
-            trajectoryLine.HideTrajectoryLine();
-        }
+        ShowDaeLine();
+        if (_input && _isWaiting == false) Shoot();
+    }
 
-        if (Input.GetKeyUp(code) && isWaiting == false)
-        {
-            Shoot();
-        }
+    void ShowDaeLine()
+    {
+        if (_input)
+            trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * shotForce / bombMass);
+        else
+            trajectoryLine.HideTrajectoryLine();
     }
 
     void Shoot()
     {
-        GameObject bomb = Instantiate(ObjectToShoot);
+        GameObject bomb = Instantiate(objectToShoot);
         bomb.transform.position = shootOrigin.position;
+
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.mass = bombMass;
         rb.AddForce(shootOrigin.forward * shotForce, ForceMode.Impulse);
-        isWaiting = true;
+
+        Projectile projectile = bomb.GetComponent<Projectile>();
+        projectile.projectileOwner = playerNum;
+
+        _isWaiting = true;
         StartCoroutine(DelayShooting());
     }
 
     private IEnumerator DelayShooting()
     {
         yield return new WaitForSeconds(shootDelay);
-        isWaiting = false;
+        _isWaiting = false;
     }
 }
