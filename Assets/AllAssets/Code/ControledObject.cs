@@ -40,10 +40,6 @@ public class ShipController : MonoBehaviour
                 PlayerTwoInput();
                 break;
         }
-    }
-
-    private void FixedUpdate()
-    {
         Move();
     }
 

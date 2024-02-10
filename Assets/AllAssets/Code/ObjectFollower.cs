@@ -11,12 +11,14 @@ public class ShipFollow : MonoBehaviour
 
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        //Szymon chce zobaczyæ jak z leeeeciutenkim opóŸnieniem na zmianie pozycji. Czego ten statek siê trzêsie?!
-        //transform.position = shipTarget.position + offset;
-        transform.position = Vector3.Lerp(transform.position, shipTarget.position, smoothingPosition * Time.deltaTime) + offset;
+        if (shipTarget != null)
+        {
+            //transform.position = shipTarget.position + offset;
+            transform.position = Vector3.Lerp(transform.position, shipTarget.position, smoothingPosition * Time.deltaTime) + offset;
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, shipTarget.rotation, smoothingRotation * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, shipTarget.rotation, smoothingRotation * Time.deltaTime);
+        }
     }
 }
