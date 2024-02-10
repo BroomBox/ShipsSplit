@@ -16,7 +16,6 @@ public class ShipController : MonoBehaviour
     public float speed = 6f;
     public float turnSpeed = 15f;
     
-    
 
     Vector2 _input;
 
