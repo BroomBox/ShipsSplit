@@ -17,10 +17,16 @@ public class TrajectorylLine : MonoBehaviour
 
     public void ShowTrajectoryLine(Vector3 startpoint, Vector3 startVelocity)
     {
+        lineRenderer.enabled = true;
         float timeStep = timeOfTheFlight / lineSegments;
         Vector3[] lineRendererPoints = CalculateTrajectoryLine(startpoint, startVelocity, timeStep);
         lineRenderer.positionCount = lineSegments;
         lineRenderer.SetPositions(lineRendererPoints);
+    }
+
+    public void HideTrajectoryLine()
+    {
+        lineRenderer.enabled = false;
     }
 
     private Vector3[] CalculateTrajectoryLine(Vector3 startpoint, Vector3 startVelocity, float timeStep)

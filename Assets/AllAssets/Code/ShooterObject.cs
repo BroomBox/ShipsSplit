@@ -27,12 +27,32 @@ public class ShooterObject : MonoBehaviour
 
     }
 
-
-
     void Update()
     {
-        trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * shotForce / bombMass);
-        if (Input.GetKeyDown(KeyCode.Space) && isWaiting == false)
+        switch (playerNum)
+        {
+            case WhatPlayer.Player1:
+                PlayersShoot(KeyCode.Q);
+                break;
+            case WhatPlayer.Player2:
+                PlayersShoot(KeyCode.Space);
+                break;
+        }
+    }
+
+    private void PlayersShoot(KeyCode code)
+    {
+        //fix - player1 Q, player2 Spacja
+        if (Input.GetKey(code))
+        {
+            trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * shotForce / bombMass);
+        }
+        else
+        {
+            trajectoryLine.HideTrajectoryLine();
+        }
+
+        if (Input.GetKeyUp(code) && isWaiting == false)
         {
             Shoot();
         }
