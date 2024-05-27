@@ -61,7 +61,7 @@ public class ShipController : MonoBehaviour
     void Move()
     {
         _velocity = transform.forward * _input.y;
-        transform.Rotate(Vector3.up * _input.x * turnSpeed * Time.deltaTime);
+        transform.Rotate(Vector3.up * (_input.x * turnSpeed * Time.deltaTime));
         _controller.Move(speed * Time.deltaTime * _velocity);
     }
 }

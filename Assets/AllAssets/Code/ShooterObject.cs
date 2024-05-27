@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 /// <summary>
@@ -22,31 +20,45 @@ public class ShooterObject : MonoBehaviour
 
     [SerializeField] private float bombMass = 30;
 
-    [SerializeField] private float shotForce = 30;
+    private float _shotForce;
+    
+    [SerializeField] private float baseShotForce = 50;
 
+    [SerializeField]
+    private float shotForceIncrease = 2f;
+    
     [SerializeField] private float shootDelay = 1f;
 
+    
+    
+    private KeyCode _inputKey;
+    
     private bool _isWaiting = false;
 
     private bool _input;
 
+    private void Start()
+    {
+        _shotForce = baseShotForce;
+        MapInput();
+    }
+
     void Update()
     {
-        GetInput();
         PlayersShoot();
     }
 
 
 
-    private void GetInput()
+    private void MapInput()
     {
         switch (playerNum)
         {
             case WhatPlayer.Player1:
-                _input = Input.GetKey(KeyCode.Space); // space key
+                _inputKey = KeyCode.Space; // space key
                 break;
             case WhatPlayer.Player2:
-                _input = Input.GetKey(KeyCode.Return); // enter key
+                _inputKey = KeyCode.Return; // enter key
                 break;
         }
     }
@@ -54,13 +66,21 @@ public class ShooterObject : MonoBehaviour
     private void PlayersShoot()
     {
         ShowDaeLine();
-        if (_input && _isWaiting == false) Shoot();
+        if (Input.GetKey(_inputKey)) IncreaseForce();
+        
+        if (Input.GetKeyUp(_inputKey) && _isWaiting == false) Shoot();
+    }
+
+
+    void IncreaseForce()
+    {
+        _shotForce += shotForceIncrease;
     }
 
     void ShowDaeLine()
     {
-        if (_input)
-            trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * shotForce / bombMass);
+        if (Input.GetKeyDown(_inputKey))
+            trajectoryLine.ShowTrajectoryLine(shootOrigin.position, shootOrigin.forward * _shotForce / bombMass);
         else
             trajectoryLine.HideTrajectoryLine();
     }
@@ -72,12 +92,13 @@ public class ShooterObject : MonoBehaviour
 
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
         rb.mass = bombMass;
-        rb.AddForce(shootOrigin.forward * shotForce, ForceMode.Impulse);
+        rb.AddForce(shootOrigin.forward * _shotForce, ForceMode.Impulse);
 
         Projectile projectile = bomb.GetComponent<Projectile>();
         projectile.projectileOwner = playerNum;
-
+        
         _isWaiting = true;
+        _shotForce = baseShotForce;
         StartCoroutine(DelayShooting());
     }
 
